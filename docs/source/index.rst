@@ -18,8 +18,8 @@
    :caption: Versions:
    :maxdepth: 3
 
-   Stable <https://apn-pucky.github.io/smpl/>
-   Dev <https://apn-pucky.github.io/smpl/test/>
+   Stable <https://apn-pucky.github.io/smpl_doc/>
+   Dev <https://apn-pucky.github.io/smpl_doc/test/>
 
 .. toctree::
    :glob:
@@ -27,7 +27,7 @@
    :caption: Links:
    :maxdepth: 3
 
-   GitHub <https://github.com/APN-Pucky/smpl>
+   GitHub <https://github.com/APN-Pucky/smpl_doc>
  
 
 .. toctree::
