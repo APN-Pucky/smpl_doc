@@ -20,6 +20,7 @@ smpl\_doc.doc
       array_table
       deprecated
       dict_to_table
+      insert
       insert_doc
       insert_str
       table
