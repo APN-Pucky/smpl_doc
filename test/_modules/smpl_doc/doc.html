@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                1.0.5-13-g8d29482
+                1.0.5-14-g23733fd
               </div>
             
           
@@ -177,6 +177,7 @@
             
   <h1>Source code for smpl_doc.doc</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Simplified python code documentation.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">deprecation</span> <span class="kn">import</span> <span class="n">deprecated</span> <span class="k">as</span> <span class="n">_deprecated</span>
 
 <span class="c1"># from deprecation import deprecated as _deprecated</span>
@@ -250,6 +251,7 @@
 <span class="sd">    &gt;&gt;&gt; hi()</span>
 <span class="sd">    HoHi</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">target</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -287,21 +289,25 @@
 
 
 <div class="viewcode-block" id="deprecated"><a class="viewcode-back" href="../../_autosummary/smpl_doc.doc.deprecated.html#smpl_doc.doc.deprecated">[docs]</a><span class="k">def</span> <span class="nf">deprecated</span><span class="p">(</span>
-    <span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">deprecated_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">removed_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">None</span>
+    <span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">deprecated_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">removed_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">reason</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">details</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decorator to mark a function as deprecated.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    version : ``str``   </span>
+<span class="sd">    version : ``str``</span>
 <span class="sd">        Version of the package when the function was deprecated.</span>
 <span class="sd">    deprecated_in : ``str``</span>
-<span class="sd">        Version of the package when the function was deprecated.    </span>
+<span class="sd">        Version of the package when the function was deprecated.</span>
 <span class="sd">    removed_in : ``str``</span>
 <span class="sd">        Version of the package when the function will be removed.</span>
-<span class="sd">    reason : ``str``    </span>
-<span class="sd">        Reason for deprecation. </span>
+<span class="sd">    reason : ``str``</span>
+<span class="sd">        Reason for deprecation.</span>
 <span class="sd">    details : ``str``</span>
 <span class="sd">        Details about the deprecation.</span>
 
@@ -316,7 +322,7 @@
 <span class="sd">    &lt;BLANKLINE&gt;</span>
 <span class="sd">    .. deprecated:: 0.0.0</span>
 <span class="sd">       This will be removed in 0.2.0.</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># merge details and reason</span>
     <span class="k">if</span> <span class="n">details</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -357,7 +363,11 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="table"><a class="viewcode-back" href="../../_autosummary/smpl_doc.doc.table.html#smpl_doc.doc.table">[docs]</a><span class="nd">@deprecated</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0.3.1&quot;</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s2">&quot;Use :func:`smpl_doc.array_table` instead.&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="table"><a class="viewcode-back" href="../../_autosummary/smpl_doc.doc.table.html#smpl_doc.doc.table">[docs]</a><span class="nd">@deprecated</span><span class="p">(</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0.3.1&quot;</span><span class="p">,</span>
+    <span class="n">removed_in</span><span class="o">=</span><span class="s2">&quot;?.?.?&quot;</span><span class="p">,</span>
+    <span class="n">reason</span><span class="o">=</span><span class="s2">&quot;Use :func:`smpl_doc.array_table` instead.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="k">def</span> <span class="nf">table</span><span class="p">(</span><span class="n">dic</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tabs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add dict= {&#39;key&#39;: [values...]} to a simple reST table.</span>
