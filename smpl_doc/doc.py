@@ -2,13 +2,53 @@
 import warnings
 from deprecation import deprecated as _deprecated
 
-# from deprecation import deprecated as _deprecated
 
-params = 0
-name = 1
+def append(txt):
+    """
+    Append ``txt`` in the ``target`` function docstring.
+
+    Examples
+    --------
+    >>> @append('hi')
+    ... def ho(): pass
+    >>> ho.__doc__
+    'hi'
+    >>> @append(ho)
+    ... def hi(): pass
+    >>> hi.__doc__
+    'hi'
+    """
+    if isinstance(txt, str):
+        return append_str(txt)
+    elif hasattr(txt, "__doc__"):
+        return append_doc(txt)
+    else:
+        warnings.warn("Can't append docstring from type {}".format(type(txt)))
+    return None
 
 
-def _append(txt):
+def append_str(txt):
+    """
+    Append ``txt`` in the ``target`` function docstring.
+
+    Parameters
+    ----------
+    txt : ``str``
+        ``txt`` is inserted to the ``__doc__`` of the ``target``
+
+    Examples
+    --------
+    >>> def ho():
+    ...     '''Ho'''
+    ...     print(ho.__doc__)
+    >>> @append_doc(ho)
+    ... def hi():
+    ...     '''Hi'''
+    ...     print(hi.__doc__)
+    >>> hi()
+    HiHo
+    """
+
     def wrapper(target):
         if target.__doc__ is None:
             target.__doc__ = ""
@@ -16,15 +56,6 @@ def _append(txt):
         return target
 
     return wrapper
-
-
-def append(txt):
-    """TODO split cases doc/txt/plot?"""
-    return None
-
-
-def append_str(txt):
-    return _append(txt)
 
 
 def append_doc(original):
@@ -49,10 +80,34 @@ def append_doc(original):
     HiHo
 
     """
-    return _append(original.__doc__)
+    return append_str(original.__doc__)
 
 
-def _insert(txt):
+def insert(txt):
+    """
+    Insert ``txt`` in the ``target`` function docstring.
+
+    Examples
+    --------
+    >>> @insert('hi')
+    ... def ho(): pass
+    >>> ho.__doc__
+    'hi'
+    >>> @insert(ho)
+    ... def hi(): pass
+    >>> hi.__doc__
+    'hi'
+    """
+    if isinstance(txt, str):
+        return insert_str(txt)
+    elif hasattr(txt, "__doc__"):
+        return insert_doc(txt)
+    else:
+        warnings.warn("Can't append docstring from type {}".format(type(txt)))
+    return None
+
+
+def insert_str(txt):
     """
     Insert ``txt`` in the ``target`` function docstring.
 
@@ -83,9 +138,6 @@ def _insert(txt):
     return wrapper
 
 
-insert_str = _insert
-
-
 def insert_doc(original):
     """
     Inserts the docstring from passed function ``original`` in the ``target`` function docstring.
@@ -107,7 +159,7 @@ def insert_doc(original):
     >>> hi()
     HoHi
     """
-    return _insert(original.__doc__)
+    return insert_str(original.__doc__)
 
 
 def deprecated(
@@ -284,6 +336,12 @@ def array_table(arr, top=True, bottom=True, init=True, tabs=1, header=True):
     ====== ======
     hihi   hoho
     ====== ======
+    <BLANKLINE>
+    >>> print(trim_eol_spaces(array_table({"a":["hihi",2],"b": ["hoho",3]},tabs=0,header=False)))
+    === ====== ===
+    a   hihi   2
+    b   hoho   3
+    === ====== ===
     <BLANKLINE>
 
     """
