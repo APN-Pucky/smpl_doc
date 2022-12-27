@@ -193,6 +193,29 @@ def table_sep(tabs=1):
 def table(dic, top=True, bottom=True, init=True, tabs=1):
     """
     Add dict= {'key': [values...]} to a simple reST table.
+
+    Parameters
+    ----------
+    dic : ``dict``
+        Dictionary to be converted to a table.
+    top : ``bool``
+        If ``True`` a top line is added.
+    bottom : ``bool``
+        If ``True`` a bottom line is added.
+    init : ``bool``
+        If ``True`` a tab is added at the beginning of the line.
+    tabs : ``int``
+        Number of tabs to be added at the beginning of the line.
+
+    Returns
+    -------
+    ``str``
+        The table as a string.
+
+    Examples
+    --------
+    >>> table({'a': [1, 2, 3], 'b': [4, 5, 6]})
+    '\\t==================  ==================  ==================\\n\\ta                   1                   2                   3\\n\\tb                   4                   5                   6\\n\\t==================  ==================  ==================\\n\\t\\n'
     """
     t = "\t" * tabs
     rs = ""
