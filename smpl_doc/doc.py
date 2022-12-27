@@ -1,4 +1,5 @@
 """Simplified python code documentation."""
+import warnings
 from deprecation import deprecated as _deprecated
 
 # from deprecation import deprecated as _deprecated
@@ -72,6 +73,7 @@ def _insert(txt):
     >>> hi()
     HoHi
     """
+
     def wrapper(target):
         if target.__doc__ is None:
             target.__doc__ = ""
@@ -109,21 +111,25 @@ def insert_doc(original):
 
 
 def deprecated(
-    version=None, deprecated_in=None, removed_in=None, reason=None, details=None
+    version=None,
+    deprecated_in=None,
+    removed_in=None,
+    reason=None,
+    details=None,
 ):
     """
     Decorator to mark a function as deprecated.
 
     Parameters
     ----------
-    version : ``str``   
+    version : ``str``
         Version of the package when the function was deprecated.
     deprecated_in : ``str``
-        Version of the package when the function was deprecated.    
+        Version of the package when the function was deprecated.
     removed_in : ``str``
         Version of the package when the function will be removed.
-    reason : ``str``    
-        Reason for deprecation. 
+    reason : ``str``
+        Reason for deprecation.
     details : ``str``
         Details about the deprecation.
 
@@ -138,7 +144,7 @@ def deprecated(
     <BLANKLINE>
     .. deprecated:: 0.0.0
        This will be removed in 0.2.0.
-    
+
     """
     # merge details and reason
     if details is None:
@@ -179,7 +185,11 @@ def table_sep(tabs=1):
     )
 
 
-@deprecated(version="1.0.3.1", reason="Use :func:`smpl_doc.array_table` instead.")
+@deprecated(
+    version="1.0.3.1",
+    removed_in="?.?.?",
+    reason="Use :func:`smpl_doc.array_table` instead.",
+)
 def table(dic, top=True, bottom=True, init=True, tabs=1):
     """
     Add dict= {'key': [values...]} to a simple reST table.
