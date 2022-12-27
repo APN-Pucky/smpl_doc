@@ -61,8 +61,8 @@ extensions = [
     "sphinx.ext.doctest",
     "sphinx.ext.autosummary",
     "sphinx.ext.coverage",
-    "nbsphinx",
-    "jupyter_sphinx",
+    #"nbsphinx",
+    #"jupyter_sphinx",
 ]
 nbsphinx_execute = "never"
 # nbsphinx_widgets_path=""
