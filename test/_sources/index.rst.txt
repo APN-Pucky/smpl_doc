@@ -14,24 +14,6 @@
 
 .. toctree::
    :glob:
-   :hidden:
-   :caption: Versions:
-   :maxdepth: 3
-
-   Stable <https://apn-pucky.github.io/smpl_doc/>
-   Dev <https://apn-pucky.github.io/smpl_doc/test/>
-
-.. toctree::
-   :glob:
-   :hidden:
-   :caption: Links:
-   :maxdepth: 3
-
-   GitHub <https://github.com/APN-Pucky/smpl_doc>
- 
-
-.. toctree::
-   :glob:
    :maxdepth: 3  
    :caption: Examples:
 
@@ -55,6 +37,27 @@
 
    performance/*
 
+
+
+.. toctree::
+   :glob:
+   :hidden:
+   :caption: Versions:
+   :maxdepth: 3
+
+
+   RTD <https://smpl_doc.readthedocs.io/en/stable/>
+   Stable <https://apn-pucky.github.io/smpl_doc/>
+   Dev <https://apn-pucky.github.io/smpl_doc/test/>
+
+.. toctree::
+   :glob:
+   :hidden:
+   :caption: Links:
+   :maxdepth: 3
+
+   GitHub <https://github.com/APN-Pucky/smpl_doc>
+ 
 
 
 Indices and tables
