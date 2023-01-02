@@ -3,6 +3,7 @@ name: Follow-Tag
 on: 
   push:
     tags:
+      - '*'
 
 jobs:
   run:
