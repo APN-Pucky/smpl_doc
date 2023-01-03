@@ -6,7 +6,6 @@ Simplified plotting and fitting in python.
  [![test][a t image]][a t link]    [![Coverage Status][c t i]][c t l]  [![Documentation][rtd t i]][rtd t l]|
 
 ## Documentation
-
 -   <https://apn-pucky.github.io/smpl_doc/index.html>
 
 ## Versions
