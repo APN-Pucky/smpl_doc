@@ -33,9 +33,6 @@
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
     
@@ -67,7 +64,7 @@
             
             
               <div class="version">
-                1.1.0-2-gee059de
+                1.1.0-4-gb60a65a
               </div>
             
           
@@ -213,12 +210,12 @@
 
 
 <span class="k">class</span> <span class="nc">PackageNotFoundError</span><span class="p">(</span><span class="ne">ModuleNotFoundError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;The package was not found.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The package was not found.&quot;&quot;&quot;</span>
 
 
 <span class="k">class</span> <span class="nc">EntryPoint</span><span class="p">(</span>
         <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;EntryPointBase&#39;</span><span class="p">,</span> <span class="s1">&#39;name value group&#39;</span><span class="p">)):</span>
-    <span class="sd">&quot;&quot;&quot;An entry point as defined by Python packaging conventions.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An entry point as defined by Python packaging conventions.</span>
 
 <span class="sd">    See `the packaging docs on entry points</span>
 <span class="sd">    &lt;https://packaging.python.org/specifications/entry-points/&gt;`_</span>
@@ -230,7 +227,7 @@
         <span class="sa">r</span><span class="s1">&#39;(:\s*(?P&lt;attr&gt;[\w.]+))?\s*&#39;</span>
         <span class="sa">r</span><span class="s1">&#39;(?P&lt;extras&gt;\[.*\])?\s*$&#39;</span>
         <span class="p">)</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A regular expression describing the syntax for an entry point,</span>
 <span class="sd">    which might look like:</span>
 
@@ -247,7 +244,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load the entry point from its definition. If only a module</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load the entry point from its definition. If only a module</span>
 <span class="sd">        is indicated by the value, return that module. Otherwise,</span>
 <span class="sd">        return the named object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -282,7 +279,7 @@
         <span class="k">return</span> <span class="n">EntryPoint</span><span class="o">.</span><span class="n">_from_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Supply iter so one may construct dicts of EntryPoints easily.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="p">))</span>
@@ -295,7 +292,7 @@
 
 
 <span class="k">class</span> <span class="nc">PackagePath</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">PurePosixPath</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A reference to a path in a package&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A reference to a path in a package&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">read_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">locate</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
@@ -306,7 +303,7 @@
             <span class="k">return</span> <span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">locate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a path-like object for this path&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a path-like object for this path&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dist</span><span class="o">.</span><span class="n">locate_file</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
 
@@ -319,11 +316,11 @@
 
 
 <span class="k">class</span> <span class="nc">Distribution</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;A Python distribution package.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Python distribution package.&quot;&quot;&quot;</span>
 
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">read_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Attempt to load metadata file given by the name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Attempt to load metadata file given by the name.</span>
 
 <span class="sd">        :param filename: The name of the file in the distribution info.</span>
 <span class="sd">        :return: The text if found, otherwise None.</span>
@@ -331,14 +328,14 @@
 
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">locate_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Given a path to a file in this distribution, return a path</span>
 <span class="sd">        to it.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the Distribution for the given package name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the Distribution for the given package name.</span>
 
 <span class="sd">        :param name: The name of the distribution package to search for.</span>
 <span class="sd">        :return: The Distribution instance (or subclass thereof) for the named</span>
@@ -356,7 +353,7 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">discover</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return an iterable of Distribution objects for all packages.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return an iterable of Distribution objects for all packages.</span>
 
 <span class="sd">        Pass a ``context`` or pass keyword arguments for constructing</span>
 <span class="sd">        a context.</span>
@@ -375,7 +372,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">at</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a Distribution for the indicated metadata path</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a Distribution for the indicated metadata path</span>
 
 <span class="sd">        :param path: a string or path-like object</span>
 <span class="sd">        :return: a concrete Distribution instance for the path</span>
@@ -384,7 +381,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_discover_resolvers</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;Search the meta_path for resolvers.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Search the meta_path for resolvers.&quot;&quot;&quot;</span>
         <span class="n">declared</span> <span class="o">=</span> <span class="p">(</span>
             <span class="nb">getattr</span><span class="p">(</span><span class="n">finder</span><span class="p">,</span> <span class="s1">&#39;find_distributions&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">finder</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">meta_path</span>
@@ -393,7 +390,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the parsed metadata for this Distribution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the parsed metadata for this Distribution.</span>
 
 <span class="sd">        The returned object will have keys that name the various bits of</span>
 <span class="sd">        metadata.  See PEP 566 for details.</span>
@@ -410,7 +407,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the &#39;Version&#39; metadata for the distribution package.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the &#39;Version&#39; metadata for the distribution package.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;Version&#39;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -419,7 +416,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Files in this distribution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Files in this distribution.</span>
 
 <span class="sd">        :return: List of PackagePath for this distribution or None</span>
 
@@ -440,14 +437,14 @@
         <span class="k">return</span> <span class="n">file_lines</span> <span class="ow">and</span> <span class="nb">list</span><span class="p">(</span><span class="n">starmap</span><span class="p">(</span><span class="n">make_file</span><span class="p">,</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">file_lines</span><span class="p">)))</span>
 
     <span class="k">def</span> <span class="nf">_read_files_distinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Read the lines of RECORD</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="s1">&#39;RECORD&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">text</span> <span class="ow">and</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_read_files_egginfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        SOURCES.txt might contain literal commas, so wrap each line</span>
 <span class="sd">        in quotes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -456,7 +453,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">requires</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generated requirements specified for this Distribution&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generated requirements specified for this Distribution&quot;&quot;&quot;</span>
         <span class="n">reqs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_dist_info_reqs</span><span class="p">()</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_egg_info_reqs</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">reqs</span> <span class="ow">and</span> <span class="nb">list</span><span class="p">(</span><span class="n">reqs</span><span class="p">)</span>
 
@@ -489,7 +486,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_convert_egg_info_reqs_to_simple_reqs</span><span class="p">(</span><span class="n">sections</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Historically, setuptools would solicit and store &#39;extra&#39;</span>
 <span class="sd">        requirements, including those with environment markers,</span>
 <span class="sd">        in separate sections. More modern tools expect each</span>
@@ -515,12 +512,12 @@
 
 
 <span class="k">class</span> <span class="nc">DistributionFinder</span><span class="p">(</span><span class="n">MetaPathFinder</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A MetaPathFinder capable of discovering installed distributions.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">class</span> <span class="nc">Context</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Keyword arguments presented by the caller to</span>
 <span class="sd">        ``distributions()`` or ``Distribution.discover()``</span>
 <span class="sd">        to narrow the scope of a search for distributions</span>
@@ -532,7 +529,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Specific name for which a distribution finder should match.</span>
 <span class="sd">        A name of ``None`` matches all distributions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -542,7 +539,7 @@
 
         <span class="nd">@property</span>
         <span class="k">def</span> <span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            The path that a distribution finder should search.</span>
 
 <span class="sd">            Typically refers to Python package paths and defaults</span>
@@ -552,7 +549,7 @@
 
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">find_distributions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">Context</span><span class="p">()):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Find distributions.</span>
 
 <span class="sd">        Return an iterable of all Distribution instances capable of</span>
@@ -562,7 +559,7 @@
 
 
 <span class="k">class</span> <span class="nc">FastPath</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Micro-optimized class for searching a path for</span>
 <span class="sd">    children.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -610,7 +607,7 @@
 
 
 <span class="k">class</span> <span class="nc">Prepared</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A prepared search for metadata on a possibly-named package.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">normalized</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -633,7 +630,7 @@
 <span class="k">class</span> <span class="nc">MetadataPathFinder</span><span class="p">(</span><span class="n">DistributionFinder</span><span class="p">):</span>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_distributions</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">DistributionFinder</span><span class="o">.</span><span class="n">Context</span><span class="p">()):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Find distributions.</span>
 
 <span class="sd">        Return an iterable of all Distribution instances capable of</span>
@@ -646,7 +643,7 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_search_paths</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">paths</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find metadata directories in paths heuristically.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find metadata directories in paths heuristically.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
             <span class="n">path</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">Prepared</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span><span class="n">FastPath</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span>
@@ -655,7 +652,7 @@
 
 <span class="k">class</span> <span class="nc">PathDistribution</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Construct a distribution from a path to the metadata directory.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a distribution from a path to the metadata directory.</span>
 
 <span class="sd">        :param path: A pathlib.Path or similar object supporting</span>
 <span class="sd">                     .joinpath(), __div__, .parent, and .read_text().</span>
@@ -673,7 +670,7 @@
 
 
 <span class="k">def</span> <span class="nf">distribution</span><span class="p">(</span><span class="n">distribution_name</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get the ``Distribution`` instance for the named package.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the ``Distribution`` instance for the named package.</span>
 
 <span class="sd">    :param distribution_name: The name of the distribution package as a string.</span>
 <span class="sd">    :return: A ``Distribution`` instance (or subclass thereof).</span>
@@ -682,7 +679,7 @@
 
 
 <span class="k">def</span> <span class="nf">distributions</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get all ``Distribution`` instances in the current environment.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get all ``Distribution`` instances in the current environment.</span>
 
 <span class="sd">    :return: An iterable of ``Distribution`` instances.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -690,7 +687,7 @@
 
 
 <span class="k">def</span> <span class="nf">metadata</span><span class="p">(</span><span class="n">distribution_name</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get the metadata for the named package.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the metadata for the named package.</span>
 
 <span class="sd">    :param distribution_name: The name of the distribution package to query.</span>
 <span class="sd">    :return: An email.Message containing the parsed metadata.</span>
@@ -699,7 +696,7 @@
 
 
 <div class="viewcode-block" id="version"><a class="viewcode-back" href="../../_autosummary/smpl_doc.version.html#smpl_doc.version">[docs]</a><span class="k">def</span> <span class="nf">version</span><span class="p">(</span><span class="n">distribution_name</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get the version string for the named package.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the version string for the named package.</span>
 
 <span class="sd">    :param distribution_name: The name of the distribution package to query.</span>
 <span class="sd">    :return: The version string for the package as defined in the package&#39;s</span>
@@ -709,7 +706,7 @@
 
 
 <span class="k">def</span> <span class="nf">entry_points</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Return EntryPoint objects for all installed packages.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return EntryPoint objects for all installed packages.</span>
 
 <span class="sd">    :return: EntryPoint objects for all installed packages.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -725,7 +722,7 @@
 
 
 <span class="k">def</span> <span class="nf">files</span><span class="p">(</span><span class="n">distribution_name</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a list of files for the named package.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a list of files for the named package.</span>
 
 <span class="sd">    :param distribution_name: The name of the distribution package to query.</span>
 <span class="sd">    :return: List of files composing the distribution.</span>
@@ -734,7 +731,7 @@
 
 
 <span class="k">def</span> <span class="nf">requires</span><span class="p">(</span><span class="n">distribution_name</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of requirements for the named package.</span>
 
 <span class="sd">    :return: An iterator of requirements, suitable for</span>
