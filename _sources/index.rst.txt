@@ -11,15 +11,6 @@
 .. include:: ../../README.md
    :parser: myst_parser.sphinx_
 
-
-.. toctree::
-   :glob:
-   :maxdepth: 3  
-   :caption: Examples:
-
-   example/*
-
-
 :mod:`smpl_doc` package
 ===================
 .. autosummary::
@@ -29,15 +20,6 @@
    :caption: Modules:
 
    smpl_doc
-
-.. toctree::
-   :glob:
-   :maxdepth: 3  
-   :caption: Profiling:
-
-   performance/*
-
-
 
 .. toctree::
    :glob:
