@@ -7,7 +7,7 @@ readme = "README.md"
 repository = "https://github.com/APN-Pucky/smpl_doc"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 deprecation = "*"
 
 [tool.poetry.group.docs]
@@ -34,7 +34,6 @@ pre-commit = "^2.20.0"
 pytest = "*"
 pytest-cov =  "*"
 pytest-profiling =  "*"
-pytest-line-profiler-apn = ">=0.1.5"
 #pytest-line-profiler-apn = {path="/home/apn/git/pytest-line-profiler", develop = true}
 #ipython =  "*"
 #jupyterlab =  "*"
