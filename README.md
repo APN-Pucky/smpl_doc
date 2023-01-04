@@ -3,7 +3,7 @@ Simplified plotting and fitting in python.
 
 [![PyPI version][pypi image]][pypi link] [![PyPI version][pypi versions]][pypi link]  ![downloads](https://img.shields.io/pypi/dm/smpl_doc.svg)
 
- [![test][a t image]][a t link]    [![Coverage Status][c t i]][c t l]  [![Documentation][rtd t i]][rtd t l]
+ [![test][a t image]][a t link]    [![Coverage Status][c t i]][c t l]
 
 ## Documentation
 
