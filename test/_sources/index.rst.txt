@@ -28,7 +28,6 @@
    :maxdepth: 3
 
 
-   RTD <https://smpl_doc.readthedocs.io/en/stable/>
    Stable <https://apn-pucky.github.io/smpl_doc/>
    Dev <https://apn-pucky.github.io/smpl_doc/test/>
 
