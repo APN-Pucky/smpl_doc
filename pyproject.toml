@@ -26,15 +26,21 @@ numpydoc = "*"
 myst-parser  = "*"
 toml = "*"
 
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+pytest-cov =  "*"
+pytest-profiling =  "*"
+#pytest-line-profiler-apn = {path="/home/apn/git/pytest-line-profiler", develop = true}
+
 [tool.poetry.group.dev]
 optional = true
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^2.20.0"
-pytest = "*"
-pytest-cov =  "*"
-pytest-profiling =  "*"
-#pytest-line-profiler-apn = {path="/home/apn/git/pytest-line-profiler", develop = true}
 #ipython =  "*"
 #jupyterlab =  "*"
 #jupyter = "*"
