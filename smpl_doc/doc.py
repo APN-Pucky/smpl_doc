@@ -80,7 +80,7 @@ def append_doc(original):
     HiHo
 
     """
-    return append_str(original.__doc__)
+    return append_str(original.__doc__ if original.__doc__ is not None else "")
 
 
 def insert(txt):
