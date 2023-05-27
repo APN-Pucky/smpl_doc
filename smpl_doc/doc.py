@@ -161,7 +161,6 @@ def insert_doc(original):
     """
     return insert_str(original.__doc__)
 
-
 def deprecated(
     version=None,
     deprecated_in=None,
@@ -187,7 +186,7 @@ def deprecated(
 
     Examples
     --------
-    >>> @deprecated('0.0.0',"Old")
+    >>> @deprecated('0.0.0',removed_in=0.2.0)
     ... def ho():
     ...     '''Ho'''
     ...     print(ho.__doc__)
@@ -209,10 +208,10 @@ def deprecated(
         version = deprecated_in
 
     # increment minor version
-    if removed_in is None:
-        removed_in = ".".join(
-            [version.split(".")[0]] + [str(int(version.split(".")[1]) + 2)] + ["0"]
-        )
+    #if removed_in is None:
+    #    removed_in = ".".join(
+    #        [version.split(".")[0]] + [str(int(version.split(".")[1]) + 2)] + ["0"]
+    #    )
 
     return _deprecated(
         deprecated_in=version,
