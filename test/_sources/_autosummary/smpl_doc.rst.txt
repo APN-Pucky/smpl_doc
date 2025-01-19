@@ -35,5 +35,5 @@
    :template: custom-module-template.rst                
    :recursive:
 
-   smpl_doc.doc
+   doc
 
