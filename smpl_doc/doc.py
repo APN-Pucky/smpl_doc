@@ -1,4 +1,5 @@
 """Simplified python code documentation."""
+
 import warnings
 
 from deprecation import deprecated as _deprecated
@@ -21,10 +22,12 @@ def append(txt):
     """
     if isinstance(txt, str):
         return append_str(txt)
-    elif hasattr(txt, "__doc__"):
+    if hasattr(txt, "__doc__"):
         return append_doc(txt)
-    else:
-        warnings.warn("Can't append docstring from type {}".format(type(txt)))
+    warnings.warn(
+        f"Can't append docstring from type {type(txt)}",
+        stacklevel=2,  # Points to the caller of this function
+    )
     return None
 
 
@@ -66,7 +69,7 @@ def append_doc(original):
     Parameters
     ----------
     original : ``class`` or ``function``
-        ``orignal.__doc__`` is appended to the ``__doc__`` of the ``target``
+        ``original.__doc__`` is appended to the ``__doc__`` of the ``target``
 
     Examples
     --------
@@ -101,10 +104,12 @@ def insert(txt):
     """
     if isinstance(txt, str):
         return insert_str(txt)
-    elif hasattr(txt, "__doc__"):
+    if hasattr(txt, "__doc__"):
         return insert_doc(txt)
-    else:
-        warnings.warn("Can't append docstring from type {}".format(type(txt)))
+    warnings.warn(
+        f"Can't append docstring from type {type(txt)}",
+        stacklevel=2,  # Points to the caller of this function
+    )
     return None
 
 
@@ -146,7 +151,7 @@ def insert_doc(original):
     Parameters
     ----------
     original : ``class`` or ``function``
-        ``orignal.__doc__`` is inserted to the ``__doc__`` of the ``target``
+        ``original.__doc__`` is inserted to the ``__doc__`` of the ``target``
 
     Examples
     --------
@@ -234,7 +239,7 @@ def table_sep(tabs=1):
         + "  "
         + "=" * (tab_len - 2)
         + "\n"
-        + "\t".join(["" for i in range(0, tabs + 1)])
+        + "\t".join(["" for i in range(tabs + 1)])
     )
 
 
@@ -264,9 +269,6 @@ def table(dic, top=True, bottom=True, init=True, tabs=1):
     -------
     ``str``
         The table as a string.
-
-    Examples
-    --------
     >>> table({'a': [1, 2, 3], 'b': [4, 5, 6]})
     '\\t==================  ==================  ==================\\n\\ta                   1                   2                   3\\n\\tb                   4                   5                   6\\n\\t==================  ==================  ==================\\n\\t\\n'
     """
@@ -307,7 +309,7 @@ def trim_eol_spaces(s):
     This is only needed for the docstrings, because black does trim them.
 
     """
-    return "\n".join([l.rstrip() for l in s.split("\n")])
+    return "\n".join([ll.rstrip() for ll in s.split("\n")])
 
 
 def array_table(arr, top=True, bottom=True, init=True, tabs=1, header=True):
@@ -352,31 +354,30 @@ def array_table(arr, top=True, bottom=True, init=True, tabs=1, header=True):
     height = len(arr)
     widths = [0 for i in range(width)]
     # maximum width of each column
-    for i in range(0, width):
-        for j in range(0, height):
-            if len(str(arr[j][i])) > widths[i]:
-                widths[i] = len(str(arr[j][i]))
+    for i in range(width):
+        for j in range(height):
+            widths[i] = max(len(str(arr[j][i])), widths[i])
     rs = ""
     if init:
         rs += "\t" * tabs
     if top:
-        rs += " ".join(["=" * (widths[i] + 2) for i in range(0, width)]) + "\n"
+        rs += " ".join(["=" * (widths[i] + 2) for i in range(width)]) + "\n"
 
-    for i in range(0, height):
+    for i in range(height):
         rs += "\t" * tabs
-        for j in range(0, width):
+        for j in range(width):
             rs += str(arr[i][j]) + " " * (widths[j] - len(str(arr[i][j])) + 3)
         rs += "\n"
         if header and i == 0:
             rs += (
                 "\t" * tabs
-                + " ".join(["=" * (widths[i] + 2) for i in range(0, width)])
+                + " ".join(["=" * (widths[i] + 2) for i in range(width)])
                 + "\n"
             )
 
     if bottom:
         rs += "\t" * tabs
-        rs += " ".join(["=" * (widths[i] + 2) for i in range(0, width)]) + "\n"
+        rs += " ".join(["=" * (widths[i] + 2) for i in range(width)]) + "\n"
     return rs
 
 

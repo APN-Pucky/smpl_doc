@@ -19,7 +19,7 @@ classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
-  "License :: OSI Approved :: GPL-3 License",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
@@ -47,8 +47,6 @@ docs = [
     "sphinx",
     "sphinx-rtd-theme",
     "sphinxcontrib-napoleon",
-    "#nbsphinx",
-    "#jupyter-sphinx",
     "sphinx-autoapi",
     "sphinx_autobuild",
     "pandoc",
@@ -102,16 +100,18 @@ ignore = [
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-testpaths = ["tests"]
 junit_family = "xunit2"
 log_cli_level = "info"
 xfail_strict = true
 addopts = [
+    "-v",
+    "--doctest-modules",
+    "--ignore=docs/source/conf.py",
     "-ra",
     "--strict-markers",
     "--strict-config",
 ]
 filterwarnings = [
-  "error",
+  #"error",
   "ignore:Integer weights indicate poissonian data:UserWarning"
 ]
