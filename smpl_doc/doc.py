@@ -146,7 +146,8 @@ def insert_str(txt):
 
 def insert_doc(original):
     """
-    Inserts the docstring from passed function ``original`` in the ``target`` function docstring.
+    Inserts the docstring from passed function ``original`` in the ``target``
+    function docstring.
 
     Parameters
     ----------
@@ -217,7 +218,8 @@ def deprecated(
     # increment minor version
     # if removed_in is None:
     #    removed_in = ".".join(
-    #        [version.split(".")[0]] + [str(int(version.split(".")[1]) + 2)] + ["0"]
+    #        [version.split(".")[0]]
+    # + [str(int(version.split(".")[1]) + 2)] + ["0"]
     #    )
 
     return _deprecated(
@@ -270,7 +272,10 @@ def table(dic, top=True, bottom=True, init=True, tabs=1):
     ``str``
         The table as a string.
     >>> table({'a': [1, 2, 3], 'b': [4, 5, 6]})
-    '\\t==================  ==================  ==================\\n\\ta                   1                   2                   3\\n\\tb                   4                   5                   6\\n\\t==================  ==================  ==================\\n\\t\\n'
+    '\\t==================  ==================  ==================\\n\
+\\ta                   1                   2                   3\\n\
+\\tb                   4                   5                   6\\n\
+\\t==================  ==================  ==================\\n\\t\\n'
     """
     t = "\t" * tabs
     rs = ""
@@ -333,14 +338,16 @@ def array_table(arr, top=True, bottom=True, init=True, tabs=1, header=True):
 
     Examples
     --------
-    >>> print(trim_eol_spaces(array_table([["a","b"],["hihi", "hoho"]],tabs=0)))
+    >>> print(trim_eol_spaces(array_table([["a","b"],["hihi", "hoho"]]\
+        ,tabs=0)))
     ====== ======
     a      b
     ====== ======
     hihi   hoho
     ====== ======
     <BLANKLINE>
-    >>> print(trim_eol_spaces(array_table({"a":["hihi",2],"b": ["hoho",3]},tabs=0,header=False)))
+    >>> print(trim_eol_spaces(array_table({"a":["hihi",2],"b": ["hoho",3]}\
+        ,tabs=0,header=False)))
     === ====== ===
     a   hihi   2
     b   hoho   3
