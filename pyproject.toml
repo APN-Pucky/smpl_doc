@@ -63,6 +63,13 @@ dev = [
     "pre-commit",
 ]
 
+[tool.hatch.envs.full]
+features = [
+  "dev",
+  "docs",
+  "test",
+]
+
 [tool.hatch.version]
 source = "vcs"
 
@@ -103,6 +110,7 @@ minversion = "6.0"
 junit_family = "xunit2"
 log_cli_level = "info"
 xfail_strict = true
+testpaths = []
 addopts = [
     "-v",
     "--doctest-modules",
