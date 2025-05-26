@@ -11,7 +11,8 @@ jobs:
     unstable:
       runs-on: ubuntu-latest
       container:
-        image: apnpucky/ubuntu-hatch
+        # this image has hatch:
+        image: apnpucky/gentoo-hepi
       steps:
         - uses: APN-Pucky/make-python-action@main
           with:
